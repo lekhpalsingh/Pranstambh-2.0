@@ -56,7 +56,7 @@ const db = getFirestore(app);
 const detectionQuery = query(
     collection(db, "detections")
 );
-onSnapshot(detectionQuery, (snapshot) => {
+/*onSnapshot(detectionQuery, (snapshot) => {
 
     snapshot.docChanges().forEach((change) => {
 
@@ -201,13 +201,13 @@ onSnapshot(detectionQuery, (snapshot) => {
 
     });
 
-});
+});*/
 
 // =====================================
 // FIREBASE WILDLIFE HISTORY
 // =====================================
 
-/*let firebaseDetectionHistory = [];
+let firebaseDetectionHistory = [];
 
 
 onSnapshot(detectionQuery, (snapshot) => {
@@ -268,7 +268,7 @@ onSnapshot(detectionQuery, (snapshot) => {
 
     }
 
-});*/
+});
 
 
 
