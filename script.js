@@ -279,10 +279,107 @@ onSnapshot(
         // Latest detection
         if (detectionHistory.length > 0) {
 
-            const latest =
-                detectionHistory[detectionHistory.length - 1];
+           const latest =
+        detectionHistory.reduce(
+            (latestItem, currentItem) => {
 
-            updateLiveDetection(latest);
+                const latestTime =
+                    getDetectionDateTime(latestItem);
+
+                const currentTime =
+                    getDetectionDateTime(currentItem);
+
+                return currentTime > latestTime
+                    ? currentItem
+                    : latestItem;
+
+            }
+        );
+
+    updateLiveDetection(latest);
+           const dashboardLiveCamera =
+    document.getElementById(
+        "dashboardLiveCamera"
+    );
+
+if (dashboardLiveCamera) {
+
+    dashboardLiveCamera.textContent =
+        data.camera ||
+        data.location ||
+        "Unknown Camera";
+
+}
+
+    console.log(
+        "🟢 DASHBOARD LATEST LIVE DETECTION:",
+        latest
+    );
+           function getDetectionDateTime(data) {
+
+    if (!data) return 0;
+
+    const date =
+        String(data.date || "").trim();
+
+    const time =
+        String(data.time || "").trim();
+
+
+    // Date + time
+    const fullDate =
+        new Date(
+            `${date} ${time}`
+        ).getTime();
+
+
+    if (!isNaN(fullDate)) {
+        return fullDate;
+    }
+
+
+    // Time only
+    const match =
+        time.match(
+            /(\d{1,2}):(\d{2})(?::(\d{2}))?\s*(AM|PM)?/i
+        );
+
+
+    if (!match) {
+        return 0;
+    }
+
+
+    let hour =
+        Number(match[1]);
+
+    const minute =
+        Number(match[2]);
+
+    const second =
+        Number(match[3] || 0);
+
+    const ampm =
+        match[4]
+            ? match[4].toUpperCase()
+            : "";
+
+
+    if (ampm === "PM" && hour < 12) {
+        hour += 12;
+    }
+
+    if (ampm === "AM" && hour === 12) {
+        hour = 0;
+    }
+
+
+    return (
+        hour * 3600000 +
+        minute * 60000 +
+        second * 1000
+    );
+}
             updateActiveAlert(latest);
            function updateActiveAlert(data) {
 
