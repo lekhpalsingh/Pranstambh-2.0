@@ -1063,187 +1063,142 @@
                  LIVE DETECTION PAGE
             ================================================= -->
 
-            <section class="page" id="page-detection">
+         <section class="page" id="page-detection">
 
-                <div class="page-heading">
+    <div class="page-heading">
+        <div>
+            <span class="section-label">
+                COMPUTER VISION
+            </span>
 
-                    <div>
-                        <span class="section-label">
-                            COMPUTER VISION
-                        </span>
+            <h1>
+                Live AI Detection
+            </h1>
 
-                        <h1>
-                            Live AI Detection
-                        </h1>
+            <p>
+                Real-time wildlife detection data.
+            </p>
+        </div>
 
-                        <p>
-                            Real-time wildlife monitoring simulation.
-                        </p>
-                    </div>
+        <div class="detection-status">
+            <span id="detectionDot"></span>
 
-                    <div class="detection-status">
-                        <span id="detectionDot"></span>
-                        <span id="detectionStatus">
-                            STANDBY
-                        </span>
-                    </div>
+            <span id="detectionStatus">
+                LIVE
+            </span>
+        </div>
+    </div>
 
+
+    <div class="detection-layout">
+
+        <!-- LIVE DETECTION DATA -->
+        <div class="panel full-camera-panel">
+
+            <div class="panel-header">
+
+                <div>
+                    <span>LIVE DETECTION</span>
+
+                    <h3 id="liveAnimalTitle">
+                        Waiting for detection...
+                    </h3>
+                </div>
+
+                <div class="camera-status">
+                    <span></span>
+                    LIVE
+                </div>
+
+            </div>
+
+
+            <div class="detection-live-data">
+
+                <!-- ANIMAL -->
+                <div class="live-data-card">
+                    <small>ANIMAL</small>
+                    <strong id="liveAnimal">
+                        —
+                    </strong>
                 </div>
 
 
-                <div class="detection-layout">
-
-                    <div class="panel full-camera-panel">
-
-                        <div class="dashboard-camera big">
-
-                            <div class="camera-grid"></div>
-
-                            <div class="camera-road"></div>
-
-                            <div class="camera-overlay">
-                                LIVE CAMERA — HIGHWAY ZONE 03
-                            </div>
-
-                            <div id="bigAnimalBox"
-                                 class="dashboard-animal-box">
-
-                                <label>
-                                    COW
-                                    <b id="bigConfidence">
-                                        94%
-                                    </b>
-                                </label>
-
-                            </div>
-
-                            <div class="scan-line"></div>
-
-                            <div class="camera-info big-info">
-
-                                <div>
-                                    <small>ANIMAL</small>
-                                    <strong id="bigAnimal">
-                                        Cow
-                                    </strong>
-                                </div>
-
-                                <div>
-                                    <small>CONFIDENCE</small>
-                                    <strong id="bigConf">
-                                        94%
-                                    </strong>
-                                </div>
-
-                                <div>
-                                    <small>DISTANCE</small>
-                                    <strong id="bigDistance">
-                                        42m
-                                    </strong>
-                                </div>
-
-                                <div>
-                                    <small>DIRECTION</small>
-                                    <strong>
-                                        Toward Highway
-                                    </strong>
-                                </div>
-
-                                <div>
-                                    <small>RISK</small>
-                                    <strong class="danger-text">
-                                        HIGH
-                                    </strong>
-                                </div>
-
-                            </div>
-
-                        </div>
-
-
-                        <div class="detection-controls">
-
-                            <button class="black-btn"
-                                    onclick="startDetection()">
-                                ▶ START LIVE DETECTION
-                            </button>
-
-                            <button class="outline-btn"
-                                    onclick="stopDetection()">
-                                ■ STOP DETECTION
-                            </button>
-
-                            <button class="outline-btn"
-                                    onclick="startDemo()">
-                                ▶ DEMO MODE
-                            </button>
-
-                        </div>
-
-                    </div>
-
-
-                    <div class="panel detection-info">
-
-                        <span class="section-label">
-                            DETECTION ENGINE
-                        </span>
-
-                        <h3>
-                            YOLO-based Wildlife Detection
-                        </h3>
-
-                        <p>
-                            Frontend simulation of the future
-                            edge-AI detection pipeline.
-                        </p>
-
-
-                        <div class="confidence-box">
-
-                            <span>MODEL CONFIDENCE</span>
-
-                            <strong id="confidenceNumber">
-                                94%
-                            </strong>
-
-                            <div class="progress">
-                                <span style="width:94%"></span>
-                            </div>
-
-                        </div>
-
-
-                        <div class="detection-attributes">
-
-                            <div>
-                                <span>Animal</span>
-                                <strong>Cow</strong>
-                            </div>
-
-                            <div>
-                                <span>Distance</span>
-                                <strong>42m</strong>
-                            </div>
-
-                            <div>
-                                <span>Movement</span>
-                                <strong>Toward highway</strong>
-                            </div>
-
-                            <div>
-                                <span>Duration</span>
-                                <strong>4.2 sec</strong>
-                            </div>
-
-                        </div>
-
-                    </div>
-
+                <!-- CAMERA -->
+                <div class="live-data-card">
+                    <small>CAMERA</small>
+                    <strong id="liveCamera">
+                        —
+                    </strong>
                 </div>
 
-            </section>
 
+                <!-- CONFIDENCE -->
+                <div class="live-data-card">
+                    <small>CONFIDENCE</small>
+                    <strong id="liveConfidence">
+                        —
+                    </strong>
+                </div>
+
+
+                <!-- DATE -->
+                <div class="live-data-card">
+                    <small>DATE</small>
+                    <strong id="liveDate">
+                        —
+                    </strong>
+                </div>
+
+
+                <!-- RISK -->
+                <div class="live-data-card">
+                    <small>RISK</small>
+                    <strong id="liveRisk">
+                        —
+                    </strong>
+                </div>
+
+
+                <!-- STATUS -->
+                <div class="live-data-card">
+                    <small>STATUS</small>
+                    <strong id="liveStatus">
+                        —
+                    </strong>
+                </div>
+
+
+                <!-- TIME -->
+                <div class="live-data-card">
+                    <small>TIME</small>
+                    <strong id="liveTime">
+                        —
+                    </strong>
+                </div>
+
+            </div>
+
+
+            <div class="detection-controls">
+
+                <button class="black-btn"
+                        onclick="startDetection()">
+                    ▶ START LIVE DETECTION
+                </button>
+
+                <button class="outline-btn"
+                        onclick="stopDetection()">
+                    ■ STOP DETECTION
+                </button>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
 
             <!-- =================================================
                  ALERTS PAGE
