@@ -2220,23 +2220,18 @@ function initializeMap() {
 
     if (map) return;
 
-
-    const mapElement =
-        document.getElementById(
-            "map"
-        );
-
+    const mapElement = document.getElementById("map");
 
     if (!mapElement) return;
 
+    // =========================================
+    // JODHPUR → UDAIPUR MAP
+    // =========================================
 
-    map =
-        L.map("map")
-        .setView(
-            [26.2389, 73.0243],
-            7
-        );
-
+    map = L.map("map").setView(
+        [25.45, 73.55],
+        8
+    );
 
     L.tileLayer(
         "https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",
@@ -2247,24 +2242,26 @@ function initializeMap() {
     ).addTo(map);
 
 
-    /*
-        Demo highway route.
-
-        These coordinates are demonstration data
-        and are NOT government/official locations.
-    */
+    // =========================================
+    // JODHPUR → PALI → RAJSAMAND → UDAIPUR
+    // =========================================
 
     const highwayRoute = [
 
+        // Jodhpur
         [26.2389, 73.0243],
 
-        [26.55, 73.18],
+        // Pali
+        [25.7711, 73.3234],
 
-        [26.82, 73.30],
+        // Rajsamand
+        [25.0710, 73.8798],
 
-        [27.05, 73.52],
+        // Nathdwara
+        [24.9381, 73.8239],
 
-        [27.28, 73.72]
+        // Udaipur
+        [24.5854, 73.7125]
 
     ];
 
@@ -2273,90 +2270,117 @@ function initializeMap() {
         highwayRoute,
         {
             color: "#111",
-            weight: 5
+            weight: 5,
+            opacity: 0.9
         }
     ).addTo(map);
 
 
+    // =========================================
+    // REAL LOCATION ZONES
+    // =========================================
+
     const zones = [
 
         {
-            position: [26.55,73.18],
-            name: "Zone 01",
-            detections: 5,
-            color: "green"
+            position: [26.2389, 73.0243],
+            name: "Jodhpur Zone",
+            detections: 0,
+            color: "#2e7d32"
         },
 
         {
-            position: [26.82,73.30],
-            name: "Zone 02",
-            detections: 18,
-            color: "#c62828"
-        },
-
-        {
-            position: [27.05,73.52],
-            name: "Zone 03",
-            detections: 3,
+            position: [25.7711, 73.3234],
+            name: "Pali Zone",
+            detections: 0,
             color: "#d69d00"
         },
 
         {
-            position: [27.28,73.72],
-            name: "Zone 04",
-            detections: 8,
-            color: "green"
+            position: [25.0710, 73.8798],
+            name: "Rajsamand Zone",
+            detections: 0,
+            color: "#d69d00"
+        },
+
+        {
+            position: [24.9381, 73.8239],
+            name: "Nathdwara Zone",
+            detections: 0,
+            color: "#c62828"
+        },
+
+        {
+            position: [24.5854, 73.7125],
+            name: "Udaipur Zone",
+            detections: 0,
+            color: "#2e7d32"
         }
 
     ];
 
 
+    // =========================================
+    // CREATE HOTSPOT MARKERS
+    // =========================================
+
     zones.forEach(zone => {
 
-        const marker =
-            L.circleMarker(
-                zone.position,
-                {
-                    radius: 10,
+        const marker = L.circleMarker(
+            zone.position,
+            {
+                radius: 10,
 
-                    fillColor:
-                        zone.color,
+                fillColor:
+                    zone.color,
 
-                    color:
-                        "#fff",
+                color: "#fff",
 
-                    weight: 2,
+                weight: 2,
 
-                    opacity: 1,
+                opacity: 1,
 
-                    fillOpacity: .9
-                }
-            ).addTo(map);
+                fillOpacity: 0.9
+            }
+        ).addTo(map);
 
 
         marker.bindPopup(`
-
+            
             <strong>
                 ${zone.name}
             </strong>
 
-            <br>
+            <br><br>
 
-            ${zone.detections}
-            wildlife detections
+            <span>
+                Wildlife detections:
+                <b>${zone.detections}</b>
+            </span>
 
             <br><br>
 
             <small>
-                Demo Data
+                Jodhpur → Udaipur Wildlife Corridor
             </small>
 
         `);
 
     });
 
-}
 
+    // =========================================
+    // FIT MAP TO ROUTE
+    // =========================================
+
+    map.fitBounds(
+        highwayRoute,
+        {
+            padding: [30, 30]
+        }
+    );
+
+}
 
 /* =========================================================
    CLOSE MODAL WHEN CLICKING OUTSIDE
