@@ -55,8 +55,7 @@ const db = getFirestore(app);
 // =====================================
 
 const detectionQuery = query(
-    collection(db, "detections"),
-    orderBy("timestamp", "desc")
+    collection(db, "detections")
 );
 
 
@@ -64,98 +63,144 @@ onSnapshot(detectionQuery, (snapshot) => {
 
     snapshot.docChanges().forEach((change) => {
 
-        if (change.type === "added") {
+        if (change.type !== "added") {
+            return;
+        }
 
-            const data = change.doc.data();
+        const data = change.doc.data();
 
-            console.log("🔥 NEW LIVE DATA:", data);
-
-
-            // =========================
-            // ANIMAL
-            // =========================
-
-            const bigAnimal =
-                document.getElementById("bigAnimal");
-
-            if (bigAnimal) {
-                bigAnimal.textContent =
-                    data.animal || "UNKNOWN";
-            }
+        console.log("🔥 NEW LIVE DETECTION:", data);
 
 
-            // =========================
-            // CONFIDENCE
-            // =========================
+        // =========================
+        // ANIMAL
+        // =========================
 
-            const bigConf =
-                document.getElementById("bigConf");
+        const liveAnimal =
+            document.getElementById("liveAnimal");
 
-            const bigConfidence =
-                document.getElementById("bigConfidence");
-
-            const confidenceNumber =
-                document.getElementById("confidenceNumber");
-
-
-            if (bigConf) {
-                bigConf.textContent =
-                    `${data.confidence || 0}%`;
-            }
-
-            if (bigConfidence) {
-                bigConfidence.textContent =
-                    `${data.confidence || 0}%`;
-            }
-
-            if (confidenceNumber) {
-                confidenceNumber.textContent =
-                    `${data.confidence || 0}%`;
-            }
+        if (liveAnimal) {
+            liveAnimal.textContent =
+                data.animal || "UNKNOWN";
+        }
 
 
-            // =========================
-            // DISTANCE
-            // =========================
+        const liveAnimalTitle =
+            document.getElementById("liveAnimalTitle");
 
-            const bigDistance =
-                document.getElementById("bigDistance");
-
-            const liveDistance =
-                document.getElementById("liveDistance");
-
-
-            if (bigDistance) {
-                bigDistance.textContent =
-                    `${data.distance || 0}m`;
-            }
-
-            if (liveDistance) {
-                liveDistance.textContent =
-                    `${data.distance || 0}m`;
-            }
+        if (liveAnimalTitle) {
+            liveAnimalTitle.textContent =
+                data.animal
+                    ? `${data.animal} Detected`
+                    : "Animal Detected";
+        }
 
 
-            // =========================
-            // RISK
-            // =========================
+        // =========================
+        // CAMERA
+        // =========================
 
-            console.log(
-                "Risk:",
-                data.risk
-            );
+        const liveCamera =
+            document.getElementById("liveCamera");
+
+        if (liveCamera) {
+            liveCamera.textContent =
+                data.camera || "UNKNOWN";
+        }
 
 
-            // =========================
-            // LOCATION
-            // =========================
+        // =========================
+        // CONFIDENCE
+        // =========================
 
-            console.log(
-                "Location:",
-                data.location
-            );
+        const liveConfidence =
+            document.getElementById("liveConfidence");
+
+        if (liveConfidence) {
+
+            liveConfidence.textContent =
+                data.confidence !== undefined
+                    ? `${data.confidence}%`
+                    : "—";
 
         }
+
+
+        // =========================
+        // DATE
+        // =========================
+
+        const liveDate =
+            document.getElementById("liveDate");
+
+        if (liveDate) {
+
+            liveDate.textContent =
+                data.date || "—";
+
+        }
+
+
+        // =========================
+        // RISK
+        // =========================
+
+        const liveRisk =
+            document.getElementById("liveRisk");
+
+        if (liveRisk) {
+
+            liveRisk.textContent =
+                data.risk || "—";
+
+            liveRisk.className = "";
+
+            if (data.risk) {
+                liveRisk.classList.add(
+                    `risk-${data.risk.toLowerCase()}`
+                );
+            }
+
+        }
+
+
+        // =========================
+        // STATUS
+        // =========================
+
+        const liveStatus =
+            document.getElementById("liveStatus");
+
+        if (liveStatus) {
+
+            liveStatus.textContent =
+                data.status || "—";
+
+        }
+
+
+        // =========================
+        // TIME
+        // =========================
+
+        const liveTime =
+            document.getElementById("liveTime");
+
+        if (liveTime) {
+
+            liveTime.textContent =
+                data.time || "—";
+
+        }
+
+
+        console.log("Animal:", data.animal);
+        console.log("Camera:", data.camera);
+        console.log("Confidence:", data.confidence);
+        console.log("Date:", data.date);
+        console.log("Risk:", data.risk);
+        console.log("Status:", data.status);
+        console.log("Time:", data.time);
 
     });
 
