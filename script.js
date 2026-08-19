@@ -19,8 +19,7 @@ import {
     getFirestore,
     collection,
     onSnapshot,
-    query,
-    orderBy
+    query
 } from
 "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
 
@@ -206,6 +205,576 @@ onSnapshot(detectionQuery, (snapshot) => {
 
 });
 
+// =====================================
+// WILDLIFE ANALYTICS
+// =====================================
+
+function updateWildlifeAnalytics() {
+
+    const data =
+        firebaseDetectionHistory;
+
+
+    if (!data.length) {
+
+        setAnalyticsText(
+            "analyticsTotal",
+            "0"
+        );
+
+        setAnalyticsText(
+            "analyticsAlerts",
+            "0"
+        );
+
+        setAnalyticsText(
+            "analyticsHighRisk",
+            "0"
+        );
+
+        setAnalyticsText(
+            "analyticsMostDetected",
+            "—"
+        );
+
+        return;
+    }
+
+
+    // =================================
+    // TOTAL DETECTIONS
+    // =================================
+
+    setAnalyticsText(
+        "analyticsTotal",
+        data.length
+    );
+
+
+    // =================================
+    // TOTAL ALERTS
+    // =================================
+
+    const totalAlerts =
+        data.filter(item => {
+
+            const status =
+                item.status.toLowerCase();
+
+            return (
+                status.includes("alert") ||
+                status.includes("warning")
+            );
+
+        }).length;
+
+
+    setAnalyticsText(
+        "analyticsAlerts",
+        totalAlerts
+    );
+
+
+    // =================================
+    // HIGH RISK
+    // =================================
+
+    const highRisk =
+        data.filter(
+            item => item.risk === "HIGH"
+        ).length;
+
+
+    setAnalyticsText(
+        "analyticsHighRisk",
+        highRisk
+    );
+
+
+    // =================================
+    // MOST DETECTED ANIMAL
+    // =================================
+
+    const animalCounts =
+        countValues(
+            data,
+            "animal"
+        );
+
+
+    const mostDetected =
+        getHighestCount(
+            animalCounts
+        );
+
+
+    setAnalyticsText(
+        "analyticsMostDetected",
+        mostDetected.name || "—"
+    );
+
+
+    // =================================
+    // ANIMAL DISTRIBUTION
+    // =================================
+
+    renderAnalyticsBars(
+        "animalAnalytics",
+        animalCounts
+    );
+
+
+    // =================================
+    // RISK DISTRIBUTION
+    // =================================
+
+    const riskCounts =
+        countValues(
+            data,
+            "risk"
+        );
+
+
+    renderAnalyticsBars(
+        "riskAnalytics",
+        riskCounts,
+        true
+    );
+
+
+    // =================================
+    // CAMERA DISTRIBUTION
+    // =================================
+
+    const cameraCounts =
+        countValues(
+            data,
+            "camera"
+        );
+
+
+    renderAnalyticsBars(
+        "cameraAnalytics",
+        cameraCounts
+    );
+
+
+    // =================================
+    // DATE DISTRIBUTION
+    // =================================
+
+    const dateCounts =
+        countValues(
+            data,
+            "date"
+        );
+
+
+    renderAnalyticsBars(
+        "dateAnalytics",
+        dateCounts
+    );
+
+
+    // =================================
+    // PEAK TIME
+    // =================================
+
+    updatePeakActivity(data);
+
+}
+
+// =====================================
+// COUNT VALUES
+// =====================================
+
+function countValues(data, field) {
+
+    const counts = {};
+
+    data.forEach(item => {
+
+        const value =
+            item[field] || "UNKNOWN";
+
+        counts[value] =
+            (counts[value] || 0) + 1;
+
+    });
+
+    return counts;
+}
+
+
+// =====================================
+// HIGHEST COUNT
+// =====================================
+
+function getHighestCount(counts) {
+
+    let name = "";
+    let count = 0;
+
+    Object.entries(counts).forEach(
+        ([key, value]) => {
+
+            if (value > count) {
+
+                name = key;
+                count = value;
+
+            }
+
+        }
+    );
+
+    return {
+        name,
+        count
+    };
+
+}
+
+
+// =====================================
+// ANALYTICS TEXT
+// =====================================
+
+function setAnalyticsText(
+    id,
+    value
+) {
+
+    const element =
+        document.getElementById(id);
+
+    if (element) {
+
+        element.textContent =
+            value;
+
+    }
+
+}
+
+
+// =====================================
+// ANALYTICS BARS
+// =====================================
+
+function renderAnalyticsBars(
+    containerId,
+    counts,
+    percentage = false
+) {
+
+    const container =
+        document.getElementById(
+            containerId
+        );
+
+    if (!container) return;
+
+
+    container.innerHTML = "";
+
+
+    const entries =
+        Object.entries(counts)
+            .sort(
+                (a, b) =>
+                    b[1] - a[1]
+            );
+
+
+    if (!entries.length) {
+
+        container.innerHTML =
+            "<p>No detection data available.</p>";
+
+        return;
+
+    }
+
+
+    const max =
+        Math.max(
+            ...entries.map(
+                item => item[1]
+            )
+        );
+
+
+    const total =
+        entries.reduce(
+            (sum, item) =>
+                sum + item[1],
+            0
+        );
+
+
+    entries.forEach(
+        ([name, count]) => {
+
+            const row =
+                document.createElement(
+                    "div"
+                );
+
+
+            const width =
+                max > 0
+                    ? (count / max) * 100
+                    : 0;
+
+
+            const value =
+                percentage
+                    ? `${(
+                        (count / total) *
+                        100
+                    ).toFixed(1)}%`
+                    : count;
+
+
+            row.innerHTML = `
+
+                <span>
+                    ${name}
+                </span>
+
+                <div>
+                    <i
+                        style="
+                            width:${width}%
+                        "
+                    ></i>
+                </div>
+
+                <b>
+                    ${value}
+                </b>
+
+            `;
+
+
+            container.appendChild(
+                row
+            );
+
+        }
+    );
+
+}
+
+// =====================================
+// PEAK WILDLIFE ACTIVITY
+// =====================================
+
+function updatePeakActivity(data) {
+
+    const periods = {
+
+        Morning: 0,
+
+        Afternoon: 0,
+
+        Evening: 0,
+
+        Night: 0
+
+    };
+
+
+    data.forEach(item => {
+
+        const hour =
+            getHourFromTime(
+                item.time
+            );
+
+
+        if (hour === null) {
+            return;
+        }
+
+
+        if (
+            hour >= 5 &&
+            hour < 12
+        ) {
+
+            periods.Morning++;
+
+        }
+        else if (
+            hour >= 12 &&
+            hour < 17
+        ) {
+
+            periods.Afternoon++;
+
+        }
+        else if (
+            hour >= 17 &&
+            hour < 21
+        ) {
+
+            periods.Evening++;
+
+        }
+        else {
+
+            periods.Night++;
+
+        }
+
+    });
+
+
+    const highest =
+        getHighestCount(
+            periods
+        );
+
+
+    const peak =
+        document.getElementById(
+            "peakActivity"
+        );
+
+
+    const text =
+        document.getElementById(
+            "peakActivityText"
+        );
+
+
+    if (peak) {
+
+        peak.textContent =
+            highest.name || "—";
+
+    }
+
+
+    if (text) {
+
+        text.textContent =
+            highest.name
+                ? `${highest.count} wildlife detections occurred during the ${highest.name.toLowerCase()} period.`
+                : "No valid time data available.";
+
+    }
+
+
+    updateActivityBar(
+        "morningActivity",
+        periods.Morning,
+        periods
+    );
+
+    updateActivityBar(
+        "afternoonActivity",
+        periods.Afternoon,
+        periods
+    );
+
+    updateActivityBar(
+        "eveningActivity",
+        periods.Evening,
+        periods
+    );
+
+    updateActivityBar(
+        "nightActivity",
+        periods.Night,
+        periods
+    );
+
+}
+
+
+// =====================================
+// PARSE TIME
+// =====================================
+
+function getHourFromTime(
+    timeString
+) {
+
+    if (!timeString) {
+        return null;
+    }
+
+
+    const match =
+        String(timeString).match(
+            /(\d{1,2}):(\d{2})(?::\d{2})?\s*(AM|PM)?/i
+        );
+
+
+    if (!match) {
+        return null;
+    }
+
+
+    let hour =
+        Number(match[1]);
+
+
+    const ampm =
+        match[3]
+            ? match[3].toUpperCase()
+            : null;
+
+
+    if (ampm === "PM" && hour < 12) {
+
+        hour += 12;
+
+    }
+
+
+    if (ampm === "AM" && hour === 12) {
+
+        hour = 0;
+
+    }
+
+
+    return hour;
+
+}
+
+
+// =====================================
+// ACTIVITY BAR
+// =====================================
+
+function updateActivityBar(
+    id,
+    count,
+    periods
+) {
+
+    const element =
+        document.getElementById(id);
+
+    if (!element) return;
+
+
+    const max =
+        Math.max(
+            ...Object.values(periods),
+            1
+        );
+
+
+    element.style.height =
+        `${(count / max) * 100}%`;
+
+}
 /* =========================================================
    DOM
 ========================================================= */
