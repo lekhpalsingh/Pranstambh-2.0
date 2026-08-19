@@ -77,7 +77,7 @@
                 </button>
 
                 <button class="outline-btn large"
-                        onclick="document.getElementById('howItWorks').scrollIntoView({behavior:'smooth'})">
+                        onclick="showHowItWorks()">
                     How It Works
                 </button>
 
@@ -399,6 +399,245 @@
         </button>
 
     </footer>
+    <!-- =========================================================
+     HOW IT WORKS MODAL
+========================================================= -->
+
+<div id="howItWorksModal"
+     class="how-it-works-modal"
+     aria-hidden="true">
+
+    <div class="how-it-works-overlay"
+         onclick="closeHowItWorks()">
+    </div>
+
+
+    <div class="how-it-works-box">
+
+        <button class="how-close-btn"
+                onclick="closeHowItWorks()"
+                aria-label="Close">
+            ×
+        </button>
+
+
+        <div class="how-modal-header">
+
+            <span class="section-label">
+                PRANSTAMBH / SYSTEM FLOW
+            </span>
+
+            <h2>
+                How PRANSTAMBH Works
+            </h2>
+
+            <p>
+                An AI-powered wildlife detection and highway
+                safety intelligence system.
+            </p>
+
+        </div>
+
+
+        <div class="how-steps">
+
+
+            <!-- STEP 01 -->
+
+            <div class="how-step">
+
+                <div class="how-step-number">
+                    01
+                </div>
+
+                <div>
+
+                    <h3>
+                        Wildlife Detection
+                    </h3>
+
+                    <p>
+                        Cameras installed near highway and
+                        wildlife-prone areas continuously monitor
+                        the surroundings. When an animal enters the
+                        camera view, the AI-based detection system
+                        identifies the animal in real time.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <!-- STEP 02 -->
+
+            <div class="how-step">
+
+                <div class="how-step-number">
+                    02
+                </div>
+
+                <div>
+
+                    <h3>
+                        AI Identification
+                    </h3>
+
+                    <p>
+                        The AI model determines which animal has
+                        been detected and provides a confidence
+                        score indicating how confident the model is
+                        about the detection.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <!-- STEP 03 -->
+
+            <div class="how-step">
+
+                <div class="how-step-number">
+                    03
+                </div>
+
+                <div>
+
+                    <h3>
+                        Detection Data
+                    </h3>
+
+                    <p>
+                        Each detection is recorded with important
+                        information such as animal, camera,
+                        confidence, date, risk, status and time.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <!-- STEP 04 -->
+
+            <div class="how-step">
+
+                <div class="how-step-number">
+                    04
+                </div>
+
+                <div>
+
+                    <h3>
+                        Firebase Cloud Storage
+                    </h3>
+
+                    <p>
+                        Detection records are stored in Firebase
+                        Firestore. This allows the PRANSTAMBH
+                        dashboard to receive and display detection
+                        information in real time.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <!-- STEP 05 -->
+
+            <div class="how-step">
+
+                <div class="how-step-number">
+                    05
+                </div>
+
+                <div>
+
+                    <h3>
+                        Risk Assessment
+                    </h3>
+
+                    <p>
+                        The system classifies the detected event
+                        according to its risk level. The dashboard
+                        displays the current risk along with the
+                        detection status.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <!-- STEP 06 -->
+
+            <div class="how-step">
+
+                <div class="how-step-number">
+                    06
+                </div>
+
+                <div>
+
+                    <h3>
+                        Warning & Alert
+                    </h3>
+
+                    <p>
+                        When an event requires attention, its alert
+                        status can be reflected on the PRANSTAMBH
+                        monitoring dashboard so that the situation
+                        can be observed and acted upon.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <!-- STEP 07 -->
+
+            <div class="how-step">
+
+                <div class="how-step-number">
+                    07
+                </div>
+
+                <div>
+
+                    <h3>
+                        Wildlife Analytics
+                    </h3>
+
+                    <p>
+                        Historical detection records are analyzed
+                        to understand animal frequency, risk
+                        distribution, camera activity, detection
+                        dates and peak wildlife activity.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+        </div>
+
+
+        <div class="how-modal-footer">
+
+            <span>
+                CAMERA → AI → FIREBASE → RISK → ALERT → ANALYTICS
+            </span>
+
+        </div>
+
+    </div>
+
+</div>
 
 </section>
 
