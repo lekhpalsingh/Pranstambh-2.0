@@ -1,0 +1,2437 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>PRANSTAMBH — Wildlife & Highway Safety</title>
+
+    <!-- Leaflet Map -->
+    <link
+        rel="stylesheet"
+        href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+    />
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<!-- =========================================================
+     LANDING PAGE
+========================================================= -->
+
+<section id="landingPage" class="landing-page">
+
+    <nav class="landing-nav">
+
+        <div class="brand">
+            <div class="brand-mark">P</div>
+
+            <div>
+                <strong>PRANSTAMBH</strong>
+                <span>Wildlife Intelligence</span>
+            </div>
+        </div>
+
+        <div class="landing-links">
+            <a href="#problem">Problem</a>
+            <a href="#solution">Solution</a>
+            <a href="#technology">Technology</a>
+            <a href="#innovation">Innovation</a>
+        </div>
+
+        <button class="black-btn" onclick="launchDashboard()">
+            Launch Dashboard →
+        </button>
+
+    </nav>
+
+
+    <div class="landing-hero">
+
+        <div class="hero-copy">
+
+            <div class="eyebrow">
+                AI • IoT • Wildlife • Highway Safety
+            </div>
+
+            <h1>
+                Detect wildlife.
+                <span>Predict risk.</span>
+                Protect lives.
+            </h1>
+
+            <p>
+                PRANSTAMBH is an AI-powered highway safety intelligence
+                platform designed to detect wildlife, assess collision
+                risk and trigger preventive warning systems.
+            </p>
+
+            <div class="hero-buttons">
+
+                <button class="black-btn large"
+                        onclick="launchDashboard()">
+                    Launch Dashboard →
+                </button>
+
+                <button class="outline-btn large"
+                        onclick="document.getElementById('howItWorks').scrollIntoView({behavior:'smooth'})">
+                    How It Works
+                </button>
+
+            </div>
+
+            <div class="hero-mini-stats">
+
+                <div>
+                    <strong>AI</strong>
+                    <span>Wildlife Detection</span>
+                </div>
+
+                <div>
+                    <strong>EDGE</strong>
+                    <span>Real-time Processing</span>
+                </div>
+
+                <div>
+                    <strong>IoT</strong>
+                    <span>Warning Infrastructure</span>
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <div class="hero-product">
+
+            <div class="product-window">
+
+                <div class="window-top">
+
+                    <div class="window-dots">
+                        <i></i>
+                        <i></i>
+                        <i></i>
+                    </div>
+
+                    <span>PRANSTAMBH / LIVE SYSTEM</span>
+
+                    <span class="online">
+                        ● ONLINE
+                    </span>
+
+                </div>
+
+
+                <div class="camera-preview">
+
+                    <div class="highway-lines"></div>
+
+                    <div class="camera-label">
+                        LIVE CAMERA — HIGHWAY ZONE 03
+                    </div>
+
+                    <div class="animal-box">
+
+                        <span class="animal-label">
+                            COW • 94%
+                        </span>
+
+                        <span class="box-point point-1"></span>
+                        <span class="box-point point-2"></span>
+                        <span class="box-point point-3"></span>
+                        <span class="box-point point-4"></span>
+
+                    </div>
+
+                    <div class="camera-data">
+
+                        <div>
+                            <small>DISTANCE</small>
+                            <strong>42m</strong>
+                        </div>
+
+                        <div>
+                            <small>DIRECTION</small>
+                            <strong>→ HIGHWAY</strong>
+                        </div>
+
+                        <div class="danger">
+                            <small>RISK</small>
+                            <strong>HIGH</strong>
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <div class="product-bottom">
+
+                    <div>
+                        <small>AI CONFIDENCE</small>
+                        <strong>94%</strong>
+                    </div>
+
+                    <div class="risk-pill">
+                        HIGH RISK
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <!-- PROBLEM -->
+
+    <section class="landing-section" id="problem">
+
+        <div class="section-label">01 / THE PROBLEM</div>
+
+        <div class="two-column">
+
+            <h2>
+                Wildlife crossing highways
+                creates a problem that
+                detection alone cannot solve.
+            </h2>
+
+            <div>
+
+                <p>
+                    Traditional surveillance systems can identify
+                    animals, but they often fail to translate a
+                    detection into an immediate safety action.
+                </p>
+
+                <p>
+                    PRANSTAMBH introduces a risk-based intelligence
+                    layer that considers distance, direction,
+                    detection duration and highway proximity.
+                </p>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- SOLUTION -->
+
+    <section class="landing-section gray-section" id="solution">
+
+        <div class="section-label">02 / THE SOLUTION</div>
+
+        <div class="solution-grid">
+
+            <div class="solution-card">
+                <span>01</span>
+                <h3>Detect</h3>
+                <p>
+                    AI camera detects wildlife in real time.
+                </p>
+            </div>
+
+            <div class="solution-card">
+                <span>02</span>
+                <h3>Predict</h3>
+                <p>
+                    Risk engine evaluates movement and proximity.
+                </p>
+            </div>
+
+            <div class="solution-card">
+                <span>03</span>
+                <h3>Protect</h3>
+                <p>
+                    Warning infrastructure is activated.
+                </p>
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- HOW IT WORKS -->
+
+    <section class="landing-section" id="howItWorks">
+
+        <div class="section-label">03 / HOW IT WORKS</div>
+
+        <h2>From camera detection<br>to preventive action.</h2>
+
+        <div class="flow">
+
+            <div>Camera</div>
+            <b>→</b>
+
+            <div>AI Detection</div>
+            <b>→</b>
+
+            <div>Risk Assessment</div>
+            <b>→</b>
+
+            <div>Warning System</div>
+            <b>→</b>
+
+            <div>Remote Alert</div>
+            <b>→</b>
+
+            <div>Analytics</div>
+
+        </div>
+
+    </section>
+
+
+    <!-- TECHNOLOGY -->
+
+    <section class="landing-section gray-section" id="technology">
+
+        <div class="section-label">04 / TECHNOLOGY</div>
+
+        <div class="tech-grid">
+
+            <div>
+                <span>AI</span>
+                <h3>YOLO-based Wildlife Detection</h3>
+                <p>
+                    Designed for real-time edge wildlife detection.
+                </p>
+            </div>
+
+            <div>
+                <span>EDGE</span>
+                <h3>RV1103 / Luckfox Pico Plus</h3>
+                <p>
+                    Edge hardware for low-latency processing.
+                </p>
+            </div>
+
+            <div>
+                <span>IoT</span>
+                <h3>Warning Infrastructure</h3>
+                <p>
+                    Remote warning and monitoring architecture.
+                </p>
+            </div>
+
+            <div>
+                <span>DATA</span>
+                <h3>Analytics Intelligence</h3>
+                <p>
+                    Historical detections identify wildlife hotspots.
+                </p>
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- INNOVATION -->
+
+    <section class="landing-section" id="innovation">
+
+        <div class="section-label">05 / INNOVATION</div>
+
+        <h2>Four layers of intelligence.</h2>
+
+        <div class="innovation-grid">
+
+            <article>
+                <span>01</span>
+                <h3>Edge AI Wildlife Detection</h3>
+                <p>
+                    Real-time wildlife detection near highways.
+                </p>
+            </article>
+
+            <article>
+                <span>02</span>
+                <h3>Risk-Based Warning</h3>
+                <p>
+                    Risk is calculated from distance,
+                    direction and detection duration.
+                </p>
+            </article>
+
+            <article>
+                <span>03</span>
+                <h3>Wildlife Hotspot Analytics</h3>
+                <p>
+                    Historical patterns identify high-risk zones.
+                </p>
+            </article>
+
+            <article>
+                <span>04</span>
+                <h3>Smart Rainwater Harvesting</h3>
+                <p>
+                    Monitor collected water for safe wildlife
+                    water availability.
+                </p>
+            </article>
+
+        </div>
+
+    </section>
+
+
+    <footer class="landing-footer">
+
+        <div>
+            © 2026 PRANSTAMBH
+        </div>
+
+        <button class="black-btn"
+                onclick="launchDashboard()">
+            Enter System →
+        </button>
+
+    </footer>
+
+</section>
+
+
+<!-- =========================================================
+     DASHBOARD APPLICATION
+========================================================= -->
+
+<div id="dashboardApp" class="dashboard-app hidden">
+
+
+    <!-- SIDEBAR -->
+
+    <aside class="sidebar" id="sidebar">
+
+        <div class="sidebar-brand">
+
+            <div class="brand-mark">P</div>
+
+            <div>
+                <strong>PRANSTAMBH</strong>
+                <span>AI SAFETY SYSTEM</span>
+            </div>
+
+        </div>
+
+
+        <div class="sidebar-status">
+
+            <span class="status-dot"></span>
+
+            <div>
+                <strong>System Online</strong>
+                <small>All services operational</small>
+            </div>
+
+        </div>
+
+
+        <nav class="side-nav">
+
+            <button class="nav-item active"
+                    data-page="dashboard">
+                <span>01</span>
+                Dashboard
+            </button>
+
+            <button class="nav-item"
+                    data-page="detection">
+                <span>02</span>
+                Live Detection
+            </button>
+
+            <button class="nav-item"
+                    data-page="alerts">
+                <span>03</span>
+                Alerts
+                <em id="alertBadge">3</em>
+            </button>
+
+            <button class="nav-item"
+                    data-page="analytics">
+                <span>04</span>
+                Wildlife Analytics
+            </button>
+
+            <button class="nav-item"
+                    data-page="map">
+                <span>05</span>
+                Hotspot Map
+            </button>
+
+            <button class="nav-item"
+                    data-page="water">
+                <span>06</span>
+                Water Harvesting
+            </button>
+
+            <button class="nav-item"
+                    data-page="health">
+                <span>07</span>
+                System Health
+            </button>
+
+            <button class="nav-item"
+                    data-page="settings">
+                <span>08</span>
+                Settings
+            </button>
+
+        </nav>
+
+
+        <div class="sidebar-bottom">
+
+            <button class="demo-btn" onclick="startDemo()">
+                <span>▶</span>
+                DEMO MODE
+            </button>
+
+            <button class="exit-btn"
+                    onclick="exitDashboard()">
+                ← Exit Dashboard
+            </button>
+
+        </div>
+
+    </aside>
+
+
+    <!-- MAIN -->
+
+    <main class="dashboard-main">
+
+
+        <!-- TOPBAR -->
+
+        <header class="topbar">
+
+            <button class="mobile-menu"
+                    onclick="toggleSidebar()">
+                ☰
+            </button>
+
+            <div>
+
+                <small>PRANSTAMBH / CONTROL CENTER</small>
+
+                <h2 id="pageTitle">
+                    Dashboard
+                </h2>
+
+            </div>
+
+
+            <div class="topbar-right">
+
+                <div class="live-clock">
+                    <span id="clock">00:00:00</span>
+                    <small id="date">--</small>
+                </div>
+
+                <div class="system-pill">
+                    <span></span>
+                    ONLINE
+                </div>
+
+                <button class="notification-button"
+                        onclick="showNotifications()">
+                    ♢
+                    <b>3</b>
+                </button>
+
+            </div>
+
+        </header>
+
+
+        <!-- PAGE CONTENT -->
+
+        <div class="page-container">
+
+
+            <!-- =================================================
+                 DASHBOARD PAGE
+            ================================================= -->
+
+            <section class="page active-page" id="page-dashboard">
+
+                <div class="page-heading">
+
+                    <div>
+
+                        <span class="section-label">
+                            SYSTEM OVERVIEW
+                        </span>
+
+                        <h1>
+                            Good Evening,
+                            <span>PRANSTAMBH</span>
+                        </h1>
+
+                    </div>
+
+                    <div class="demo-label">
+                        ● DEMO DATA
+                    </div>
+
+                </div>
+
+
+                <!-- SUMMARY CARDS -->
+
+                <div class="metric-grid">
+
+                    <div class="metric-card">
+
+                        <div class="metric-top">
+                            <span>Total Wildlife Detections</span>
+                            <i>◉</i>
+                        </div>
+
+                        <strong id="totalDetections">24</strong>
+
+                        <small class="positive">
+                            ↑ 18.4% this week
+                        </small>
+
+                    </div>
+
+
+                    <div class="metric-card">
+
+                        <div class="metric-top">
+                            <span>Active Alerts</span>
+                            <i>!</i>
+                        </div>
+
+                        <strong id="activeAlerts">3</strong>
+
+                        <small class="warning-text">
+                            1 high priority
+                        </small>
+
+                    </div>
+
+
+                    <div class="metric-card">
+
+                        <div class="metric-top">
+                            <span>High Risk Events</span>
+                            <i>△</i>
+                        </div>
+
+                        <strong id="highRisk">5</strong>
+
+                        <small>
+                            Last 24 hours
+                        </small>
+
+                    </div>
+
+
+                    <div class="metric-card water-card">
+
+                        <div class="metric-top">
+                            <span>Water Level</span>
+                            <i>◒</i>
+                        </div>
+
+                        <strong>72%</strong>
+
+                        <div class="mini-progress">
+                            <span style="width:72%"></span>
+                        </div>
+
+                    </div>
+
+
+                    <div class="metric-card">
+
+                        <div class="metric-top">
+                            <span>System Uptime</span>
+                            <i>✓</i>
+                        </div>
+
+                        <strong>99.2%</strong>
+
+                        <small class="positive">
+                            Excellent
+                        </small>
+
+                    </div>
+
+                </div>
+
+
+                <!-- MAIN DASHBOARD GRID -->
+
+                <div class="dashboard-grid">
+
+
+                    <!-- LIVE DETECTION -->
+
+                    <div class="panel live-panel">
+
+                        <div class="panel-header">
+
+                            <div>
+                                <span>LIVE DETECTION</span>
+                                <h3>Highway Zone 03</h3>
+                            </div>
+
+                            <div class="camera-status">
+                                <span></span>
+                                LIVE
+                            </div>
+
+                        </div>
+
+
+                        <div class="dashboard-camera">
+
+                            <div class="camera-grid"></div>
+
+                            <div class="camera-road"></div>
+
+                            <div class="camera-overlay">
+                                AI CAMERA / ZONE 03
+                            </div>
+
+
+                            <div id="dashboardAnimalBox"
+                                 class="dashboard-animal-box">
+
+                                <label>
+                                    COW
+                                    <b>94%</b>
+                                </label>
+
+                            </div>
+
+
+                            <div class="camera-info">
+
+                                <div>
+                                    <small>DISTANCE</small>
+                                    <strong id="liveDistance">
+                                        42m
+                                    </strong>
+                                </div>
+
+                                <div>
+                                    <small>MOVEMENT</small>
+                                    <strong>
+                                        → HIGHWAY
+                                    </strong>
+                                </div>
+
+                                <div>
+                                    <small>RISK</small>
+                                    <strong class="danger-text">
+                                        HIGH
+                                    </strong>
+                                </div>
+
+                            </div>
+
+                        </div>
+
+
+                        <div class="panel-footer">
+
+                            <button class="black-btn"
+                                    onclick="startDetection()">
+                                START LIVE DETECTION
+                            </button>
+
+                            <button class="outline-btn"
+                                    onclick="stopDetection()">
+                                STOP
+                            </button>
+
+                        </div>
+
+                    </div>
+
+
+                    <!-- RISK -->
+
+                    <div class="panel">
+
+                        <div class="panel-header">
+
+                            <div>
+                                <span>RISK ASSESSMENT</span>
+                                <h3>Current Threat</h3>
+                            </div>
+
+                        </div>
+
+
+                        <div class="risk-meter">
+
+                            <div class="risk-circle">
+
+                                <strong id="riskValue">
+                                    HIGH
+                                </strong>
+
+                                <small>
+                                    CURRENT RISK
+                                </small>
+
+                            </div>
+
+                        </div>
+
+
+                        <div class="risk-scale">
+
+                            <span>LOW</span>
+                            <span>MEDIUM</span>
+                            <span>HIGH</span>
+
+                        </div>
+
+
+                        <div class="risk-reasons">
+
+                            <div>
+                                <span>Animal detected</span>
+                                <strong>Cow</strong>
+                            </div>
+
+                            <div>
+                                <span>Distance</span>
+                                <strong>42m</strong>
+                            </div>
+
+                            <div>
+                                <span>Direction</span>
+                                <strong>Toward highway</strong>
+                            </div>
+
+                            <div>
+                                <span>Duration</span>
+                                <strong>4.2 sec</strong>
+                            </div>
+
+                        </div>
+
+                    </div>
+
+
+                    <!-- WHY ALERT -->
+
+                    <div class="panel why-alert">
+
+                        <div class="panel-header">
+
+                            <div>
+                                <span>INTELLIGENCE</span>
+                                <h3>Why This Alert?</h3>
+                            </div>
+
+                            <span class="ai-tag">
+                                AI REASONING
+                            </span>
+
+                        </div>
+
+
+                        <div class="reason-main">
+
+                            <div class="reason-icon">
+                                !
+                            </div>
+
+                            <div>
+
+                                <h4>
+                                    HIGH RISK
+                                </h4>
+
+                                <p>
+                                    The detected animal is within
+                                    critical highway proximity and
+                                    moving toward traffic.
+                                </p>
+
+                            </div>
+
+                        </div>
+
+
+                        <div class="reason-list">
+
+                            <div>
+                                <span>Animal</span>
+                                <b>Cow</b>
+                            </div>
+
+                            <div>
+                                <span>Distance</span>
+                                <b>42 m</b>
+                            </div>
+
+                            <div>
+                                <span>Direction</span>
+                                <b>Toward highway</b>
+                            </div>
+
+                            <div>
+                                <span>Detection duration</span>
+                                <b>4.2 sec</b>
+                            </div>
+
+                            <div>
+                                <span>Highway proximity</span>
+                                <b>Critical</b>
+                            </div>
+
+                        </div>
+
+                        <div class="alert-result">
+                            HIGH RISK — WARNING SYSTEM ACTIVATED
+                        </div>
+
+                    </div>
+
+
+                    <!-- ACTIVE ALERT -->
+
+                    <div class="panel active-alert-panel">
+
+                        <div class="panel-header">
+
+                            <div>
+                                <span>ALERT CENTER</span>
+                                <h3>Active Alert</h3>
+                            </div>
+
+                            <span class="danger-badge">
+                                HIGH
+                            </span>
+
+                        </div>
+
+
+                        <div class="alert-animal">
+
+                            <div class="animal-avatar">
+                                🐄
+                            </div>
+
+                            <div>
+                                <strong>Cow detected</strong>
+                                <span>
+                                    Highway Zone 03
+                                </span>
+                            </div>
+
+                        </div>
+
+
+                        <div class="alert-details">
+
+                            <div>
+                                <small>TIME</small>
+                                <strong>19:42:31</strong>
+                            </div>
+
+                            <div>
+                                <small>CONFIDENCE</small>
+                                <strong>94%</strong>
+                            </div>
+
+                            <div>
+                                <small>BUZZER</small>
+                                <strong class="danger-text">ON</strong>
+                            </div>
+
+                            <div>
+                                <small>LED</small>
+                                <strong class="danger-text">RED</strong>
+                            </div>
+
+                        </div>
+
+
+                        <div class="alert-actions">
+
+                            <button class="black-btn"
+                                    onclick="acknowledgeAlert()">
+                                ACKNOWLEDGE
+                            </button>
+
+                            <button class="outline-btn"
+                                    onclick="showAlertDetails()">
+                                VIEW DETAILS
+                            </button>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <!-- HISTORY -->
+
+                <div class="panel history-panel">
+
+                    <div class="panel-header">
+
+                        <div>
+                            <span>DETECTION HISTORY</span>
+                            <h3>Recent Wildlife Events</h3>
+                        </div>
+
+                        <button class="outline-btn small"
+                                onclick="navigateTo('analytics')">
+                            View Analytics →
+                        </button>
+
+                    </div>
+
+
+                    <div class="table-controls">
+
+                        <input
+                            type="text"
+                            id="historySearch"
+                            placeholder="Search animal or zone..."
+                            onkeyup="filterHistory()"
+                        />
+
+                        <select id="riskFilter"
+                                onchange="filterHistory()">
+
+                            <option value="">All Risks</option>
+                            <option value="HIGH">High</option>
+                            <option value="MEDIUM">Medium</option>
+                            <option value="LOW">Low</option>
+
+                        </select>
+
+                    </div>
+
+
+                    <div class="table-wrapper">
+
+                        <table id="historyTable">
+
+                            <thead>
+
+                                <tr>
+                                    <th>TIME</th>
+                                    <th>ANIMAL</th>
+                                    <th>CONFIDENCE</th>
+                                    <th>DISTANCE</th>
+                                    <th>RISK</th>
+                                    <th>LOCATION</th>
+                                    <th>ACTION</th>
+                                </tr>
+
+                            </thead>
+
+                            <tbody id="historyBody"></tbody>
+
+                        </table>
+
+                    </div>
+
+                </div>
+
+            </section>
+
+
+            <!-- =================================================
+                 LIVE DETECTION PAGE
+            ================================================= -->
+
+            <section class="page" id="page-detection">
+
+                <div class="page-heading">
+
+                    <div>
+                        <span class="section-label">
+                            COMPUTER VISION
+                        </span>
+
+                        <h1>
+                            Live AI Detection
+                        </h1>
+
+                        <p>
+                            Real-time wildlife monitoring simulation.
+                        </p>
+                    </div>
+
+                    <div class="detection-status">
+                        <span id="detectionDot"></span>
+                        <span id="detectionStatus">
+                            STANDBY
+                        </span>
+                    </div>
+
+                </div>
+
+
+                <div class="detection-layout">
+
+                    <div class="panel full-camera-panel">
+
+                        <div class="dashboard-camera big">
+
+                            <div class="camera-grid"></div>
+
+                            <div class="camera-road"></div>
+
+                            <div class="camera-overlay">
+                                LIVE CAMERA — HIGHWAY ZONE 03
+                            </div>
+
+                            <div id="bigAnimalBox"
+                                 class="dashboard-animal-box">
+
+                                <label>
+                                    COW
+                                    <b id="bigConfidence">
+                                        94%
+                                    </b>
+                                </label>
+
+                            </div>
+
+                            <div class="scan-line"></div>
+
+                            <div class="camera-info big-info">
+
+                                <div>
+                                    <small>ANIMAL</small>
+                                    <strong id="bigAnimal">
+                                        Cow
+                                    </strong>
+                                </div>
+
+                                <div>
+                                    <small>CONFIDENCE</small>
+                                    <strong id="bigConf">
+                                        94%
+                                    </strong>
+                                </div>
+
+                                <div>
+                                    <small>DISTANCE</small>
+                                    <strong id="bigDistance">
+                                        42m
+                                    </strong>
+                                </div>
+
+                                <div>
+                                    <small>DIRECTION</small>
+                                    <strong>
+                                        Toward Highway
+                                    </strong>
+                                </div>
+
+                                <div>
+                                    <small>RISK</small>
+                                    <strong class="danger-text">
+                                        HIGH
+                                    </strong>
+                                </div>
+
+                            </div>
+
+                        </div>
+
+
+                        <div class="detection-controls">
+
+                            <button class="black-btn"
+                                    onclick="startDetection()">
+                                ▶ START LIVE DETECTION
+                            </button>
+
+                            <button class="outline-btn"
+                                    onclick="stopDetection()">
+                                ■ STOP DETECTION
+                            </button>
+
+                            <button class="outline-btn"
+                                    onclick="startDemo()">
+                                ▶ DEMO MODE
+                            </button>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="panel detection-info">
+
+                        <span class="section-label">
+                            DETECTION ENGINE
+                        </span>
+
+                        <h3>
+                            YOLO-based Wildlife Detection
+                        </h3>
+
+                        <p>
+                            Frontend simulation of the future
+                            edge-AI detection pipeline.
+                        </p>
+
+
+                        <div class="confidence-box">
+
+                            <span>MODEL CONFIDENCE</span>
+
+                            <strong id="confidenceNumber">
+                                94%
+                            </strong>
+
+                            <div class="progress">
+                                <span style="width:94%"></span>
+                            </div>
+
+                        </div>
+
+
+                        <div class="detection-attributes">
+
+                            <div>
+                                <span>Animal</span>
+                                <strong>Cow</strong>
+                            </div>
+
+                            <div>
+                                <span>Distance</span>
+                                <strong>42m</strong>
+                            </div>
+
+                            <div>
+                                <span>Movement</span>
+                                <strong>Toward highway</strong>
+                            </div>
+
+                            <div>
+                                <span>Duration</span>
+                                <strong>4.2 sec</strong>
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </section>
+
+
+            <!-- =================================================
+                 ALERTS PAGE
+            ================================================= -->
+
+            <section class="page" id="page-alerts">
+
+                <div class="page-heading">
+
+                    <div>
+                        <span class="section-label">
+                            EVENT MANAGEMENT
+                        </span>
+
+                        <h1>Alert Management</h1>
+
+                        <p>
+                            Monitor and manage wildlife safety events.
+                        </p>
+                    </div>
+
+                </div>
+
+
+                <div class="alert-tabs">
+
+                    <button class="active">
+                        All Alerts
+                    </button>
+
+                    <button>
+                        Active
+                    </button>
+
+                    <button>
+                        Resolved
+                    </button>
+
+                    <button>
+                        High Risk
+                    </button>
+
+                </div>
+
+
+                <div class="alert-list" id="alertList">
+
+                    <div class="alert-row high">
+
+                        <div class="alert-level">
+                            HIGH
+                        </div>
+
+                        <div>
+                            <strong>Cow detected</strong>
+                            <span>Highway Zone 03</span>
+                        </div>
+
+                        <div>
+                            <small>TIME</small>
+                            19:42:31
+                        </div>
+
+                        <div>
+                            <small>CONFIDENCE</small>
+                            94%
+                        </div>
+
+                        <div>
+                            <span class="status-tag active">
+                                ACTIVE
+                            </span>
+                        </div>
+
+                        <button onclick="showAlertDetails()">
+                            View Details
+                        </button>
+
+                    </div>
+
+
+                    <div class="alert-row medium">
+
+                        <div class="alert-level">
+                            MEDIUM
+                        </div>
+
+                        <div>
+                            <strong>Deer detected</strong>
+                            <span>Highway Zone 02</span>
+                        </div>
+
+                        <div>
+                            <small>TIME</small>
+                            19:36:22
+                        </div>
+
+                        <div>
+                            <small>CONFIDENCE</small>
+                            89%
+                        </div>
+
+                        <div>
+                            <span class="status-tag">
+                                ACKNOWLEDGED
+                            </span>
+                        </div>
+
+                        <button>
+                            View Details
+                        </button>
+
+                    </div>
+
+
+                    <div class="alert-row low">
+
+                        <div class="alert-level">
+                            LOW
+                        </div>
+
+                        <div>
+                            <strong>Nilgai detected</strong>
+                            <span>Highway Zone 01</span>
+                        </div>
+
+                        <div>
+                            <small>TIME</small>
+                            18:54:11
+                        </div>
+
+                        <div>
+                            <small>CONFIDENCE</small>
+                            86%
+                        </div>
+
+                        <div>
+                            <span class="status-tag resolved">
+                                RESOLVED
+                            </span>
+                        </div>
+
+                        <button>
+                            View Details
+                        </button>
+
+                    </div>
+
+                </div>
+
+            </section>
+
+
+            <!-- =================================================
+                 ANALYTICS PAGE
+            ================================================= -->
+
+            <section class="page" id="page-analytics">
+
+                <div class="page-heading">
+
+                    <div>
+
+                        <span class="section-label">
+                            WILDLIFE INTELLIGENCE
+                        </span>
+
+                        <h1>Wildlife Analytics</h1>
+
+                        <p>
+                            Demo analytics from historical detection data.
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <div class="analytics-cards">
+
+                    <div>
+                        <span>Total Detections</span>
+                        <strong>24</strong>
+                    </div>
+
+                    <div>
+                        <span>Total Alerts</span>
+                        <strong>11</strong>
+                    </div>
+
+                    <div>
+                        <span>High Risk</span>
+                        <strong>5</strong>
+                    </div>
+
+                    <div>
+                        <span>Most Detected</span>
+                        <strong>Cow</strong>
+                    </div>
+
+                </div>
+
+
+                <div class="chart-grid">
+
+                    <div class="panel chart-panel">
+
+                        <div class="panel-header">
+                            <div>
+                                <span>ANIMAL DETECTION</span>
+                                <h3>Detections by Day</h3>
+                            </div>
+                        </div>
+
+                        <div class="fake-chart line-chart">
+
+                            <div class="chart-bars">
+                                <i style="height:45%"></i>
+                                <i style="height:65%"></i>
+                                <i style="height:52%"></i>
+                                <i style="height:82%"></i>
+                                <i style="height:70%"></i>
+                                <i style="height:92%"></i>
+                                <i style="height:76%"></i>
+                            </div>
+
+                            <div class="chart-labels">
+                                <span>Mon</span>
+                                <span>Tue</span>
+                                <span>Wed</span>
+                                <span>Thu</span>
+                                <span>Fri</span>
+                                <span>Sat</span>
+                                <span>Sun</span>
+                            </div>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="panel chart-panel">
+
+                        <div class="panel-header">
+
+                            <div>
+                                <span>ANIMAL TYPES</span>
+                                <h3>Distribution</h3>
+                            </div>
+
+                        </div>
+
+
+                        <div class="animal-bars">
+
+                            <div>
+                                <span>Cow</span>
+                                <div>
+                                    <i style="width:85%"></i>
+                                </div>
+                                <b>35</b>
+                            </div>
+
+                            <div>
+                                <span>Deer</span>
+                                <div>
+                                    <i style="width:62%"></i>
+                                </div>
+                                <b>21</b>
+                            </div>
+
+                            <div>
+                                <span>Nilgai</span>
+                                <div>
+                                    <i style="width:40%"></i>
+                                </div>
+                                <b>12</b>
+                            </div>
+
+                            <div>
+                                <span>Wild Boar</span>
+                                <div>
+                                    <i style="width:28%"></i>
+                                </div>
+                                <b>8</b>
+                            </div>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="panel chart-panel">
+
+                        <div class="panel-header">
+
+                            <div>
+                                <span>RISK DISTRIBUTION</span>
+                                <h3>Safety Events</h3>
+                            </div>
+
+                        </div>
+
+
+                        <div class="risk-donut">
+
+                            <div>
+                                <strong>60%</strong>
+                                <span>LOW</span>
+                            </div>
+
+                        </div>
+
+                        <div class="legend">
+
+                            <span>
+                                <i></i> Low 60%
+                            </span>
+
+                            <span>
+                                <i></i> Medium 25%
+                            </span>
+
+                            <span>
+                                <i></i> High 15%
+                            </span>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="panel chart-panel">
+
+                        <div class="panel-header">
+
+                            <div>
+                                <span>ZONE ACTIVITY</span>
+                                <h3>Highway Detections</h3>
+                            </div>
+
+                        </div>
+
+
+                        <div class="zone-chart">
+
+                            <div>
+                                <span>ZONE 01</span>
+                                <i style="width:28%"></i>
+                                <b>5</b>
+                            </div>
+
+                            <div>
+                                <span>ZONE 02</span>
+                                <i style="width:90%"></i>
+                                <b>18</b>
+                            </div>
+
+                            <div>
+                                <span>ZONE 03</span>
+                                <i style="width:20%"></i>
+                                <b>3</b>
+                            </div>
+
+                            <div>
+                                <span>ZONE 04</span>
+                                <i style="width:45%"></i>
+                                <b>8</b>
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <div class="panel peak-panel">
+
+                    <div>
+                        <span class="section-label">
+                            PEAK WILDLIFE ACTIVITY
+                        </span>
+
+                        <h2>
+                            Evening
+                        </h2>
+
+                        <p>
+                            Historical demo data indicates the
+                            evening period as the highest activity window.
+                        </p>
+
+                    </div>
+
+                    <div class="activity-timeline">
+
+                        <div>
+                            <span>Morning</span>
+                            <i style="height:35%"></i>
+                        </div>
+
+                        <div>
+                            <span>Afternoon</span>
+                            <i style="height:20%"></i>
+                        </div>
+
+                        <div class="peak">
+                            <span>Evening</span>
+                            <i style="height:90%"></i>
+                        </div>
+
+                        <div>
+                            <span>Night</span>
+                            <i style="height:55%"></i>
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </section>
+
+
+            <!-- =================================================
+                 MAP
+            ================================================= -->
+
+            <section class="page" id="page-map">
+
+                <div class="page-heading">
+
+                    <div>
+                        <span class="section-label">
+                            GEOSPATIAL INTELLIGENCE
+                        </span>
+
+                        <h1>Wildlife Hotspot Map</h1>
+
+                        <p>
+                            Historical detection activity by highway zone.
+                        </p>
+                    </div>
+
+                </div>
+
+
+                <div class="map-layout">
+
+                    <div class="panel map-panel">
+
+                        <div id="map"></div>
+
+                    </div>
+
+
+                    <div class="panel hotspot-panel">
+
+                        <span class="section-label">
+                            HOTSPOT ANALYSIS
+                        </span>
+
+                        <h2>
+                            Wildlife Hotspot Detected
+                        </h2>
+
+                        <div class="hotspot-main">
+
+                            <strong>
+                                ZONE 02
+                            </strong>
+
+                            <span>
+                                18 wildlife detections
+                            </span>
+
+                        </div>
+
+                        <div class="high-activity">
+                            HIGH ACTIVITY AREA
+                        </div>
+
+                        <p>
+                            The system uses historical detection data
+                            to identify areas with frequent wildlife movement.
+                        </p>
+
+
+                        <div class="zone-list">
+
+                            <div>
+                                <span class="green-dot"></span>
+                                Zone 01
+                                <b>5</b>
+                            </div>
+
+                            <div>
+                                <span class="yellow-dot"></span>
+                                Zone 02
+                                <b>18</b>
+                            </div>
+
+                            <div>
+                                <span class="red-dot"></span>
+                                Zone 03
+                                <b>3</b>
+                            </div>
+
+                            <div>
+                                <span class="green-dot"></span>
+                                Zone 04
+                                <b>8</b>
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </section>
+
+
+            <!-- =================================================
+                 WATER HARVESTING
+            ================================================= -->
+
+            <section class="page" id="page-water">
+
+                <div class="page-heading">
+
+                    <div>
+
+                        <span class="section-label">
+                            SUSTAINABILITY SYSTEM
+                        </span>
+
+                        <h1>Smart Water Harvesting</h1>
+
+                        <p>
+                            Rainwater collection and wildlife water
+                            monitoring system.
+                        </p>
+
+                    </div>
+
+                    <div class="demo-label blue">
+                        ● WATER SYSTEM ACTIVE
+                    </div>
+
+                </div>
+
+
+                <div class="water-metrics">
+
+                    <div class="water-metric">
+
+                        <span>WATER TANK LEVEL</span>
+
+                        <strong>72%</strong>
+
+                        <div class="progress blue-progress">
+                            <span style="width:72%"></span>
+                        </div>
+
+                    </div>
+
+                    <div class="water-metric">
+
+                        <span>RAINFALL</span>
+                        <strong>18 <small>mm</small></strong>
+
+                    </div>
+
+                    <div class="water-metric">
+
+                        <span>WATER COLLECTED</span>
+                        <strong>126 <small>L</small></strong>
+
+                    </div>
+
+                    <div class="water-metric">
+
+                        <span>FILTER STATUS</span>
+                        <strong class="safe-text">
+                            ACTIVE
+                        </strong>
+
+                    </div>
+
+                    <div class="water-metric">
+
+                        <span>WATER POINT</span>
+                        <strong class="safe-text">
+                            AVAILABLE
+                        </strong>
+
+                    </div>
+
+                </div>
+
+
+                <!-- WATER FLOW -->
+
+                <div class="panel water-flow-panel">
+
+                    <div class="water-flow">
+
+                        <div class="flow-node">
+                            <span>☁</span>
+                            <strong>Rainwater</strong>
+                        </div>
+
+                        <b>↓</b>
+
+                        <div class="flow-node">
+                            <span>◒</span>
+                            <strong>Collection</strong>
+                        </div>
+
+                        <b>↓</b>
+
+                        <div class="flow-node">
+                            <span>◇</span>
+                            <strong>Filtration</strong>
+                        </div>
+
+                        <b>↓</b>
+
+                        <div class="flow-node">
+                            <span>▣</span>
+                            <strong>Storage Tank</strong>
+                        </div>
+
+                        <b>↓</b>
+
+                        <div class="flow-node">
+                            <span>♧</span>
+                            <strong>Safe Water Point</strong>
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <div class="water-dashboard-grid">
+
+                    <div class="panel tank-panel">
+
+                        <div class="panel-header">
+
+                            <div>
+                                <span>LIVE SENSOR</span>
+                                <h3>Water Tank</h3>
+                            </div>
+
+                            <span class="safe-badge">
+                                ONLINE
+                            </span>
+
+                        </div>
+
+
+                        <div class="tank">
+
+                            <div class="tank-water"
+                                 id="tankWater"></div>
+
+                            <div class="tank-level">
+                                72%
+                            </div>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="panel">
+
+                        <div class="panel-header">
+
+                            <div>
+                                <span>RAINFALL HISTORY</span>
+                                <h3>Weekly Collection</h3>
+                            </div>
+
+                        </div>
+
+
+                        <div class="rain-chart">
+
+                            <div>
+                                <i style="height:40%"></i>
+                                <span>Mon</span>
+                            </div>
+
+                            <div>
+                                <i style="height:70%"></i>
+                                <span>Tue</span>
+                            </div>
+
+                            <div>
+                                <i style="height:45%"></i>
+                                <span>Wed</span>
+                            </div>
+
+                            <div>
+                                <i style="height:85%"></i>
+                                <span>Thu</span>
+                            </div>
+
+                            <div>
+                                <i style="height:60%"></i>
+                                <span>Fri</span>
+                            </div>
+
+                            <div>
+                                <i style="height:30%"></i>
+                                <span>Sat</span>
+                            </div>
+
+                            <div>
+                                <i style="height:55%"></i>
+                                <span>Sun</span>
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <div class="safety-message">
+
+                    <strong>
+                        Wildlife Safety Principle
+                    </strong>
+
+                    <p>
+                        Wildlife water points are designed to be
+                        located at safe distances from highways and
+                        should not intentionally attract animals toward traffic.
+                    </p>
+
+                </div>
+
+            </section>
+
+
+            <!-- =================================================
+                 SYSTEM HEALTH
+            ================================================= -->
+
+            <section class="page" id="page-health">
+
+                <div class="page-heading">
+
+                    <div>
+
+                        <span class="section-label">
+                            INFRASTRUCTURE MONITORING
+                        </span>
+
+                        <h1>System Health</h1>
+
+                        <p>
+                            Live status of connected infrastructure.
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <div class="health-summary">
+
+                    <div class="health-circle">
+
+                        <strong>
+                            98%
+                        </strong>
+
+                        <span>
+                            HEALTHY
+                        </span>
+
+                    </div>
+
+                    <div>
+
+                        <span class="section-label">
+                            OVERALL STATUS
+                        </span>
+
+                        <h2>
+                            System operational.
+                        </h2>
+
+                        <p>
+                            All primary services are currently
+                            reporting healthy status.
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <div class="health-grid">
+
+                    <div class="health-card">
+                        <span>Camera</span>
+                        <strong>ONLINE</strong>
+                        <i>●</i>
+                    </div>
+
+                    <div class="health-card">
+                        <span>AI Model</span>
+                        <strong>RUNNING</strong>
+                        <i>●</i>
+                    </div>
+
+                    <div class="health-card">
+                        <span>Edge Device</span>
+                        <strong>ONLINE</strong>
+                        <i>●</i>
+                    </div>
+
+                    <div class="health-card">
+                        <span>Internet / LoRa</span>
+                        <strong>CONNECTED</strong>
+                        <i>●</i>
+                    </div>
+
+                    <div class="health-card">
+                        <span>Warning System</span>
+                        <strong>READY</strong>
+                        <i>●</i>
+                    </div>
+
+                    <div class="health-card">
+                        <span>Water Sensor</span>
+                        <strong>ONLINE</strong>
+                        <i>●</i>
+                    </div>
+
+                    <div class="health-card">
+                        <span>Cloud</span>
+                        <strong>CONNECTED</strong>
+                        <i>●</i>
+                    </div>
+
+                    <div class="health-card">
+
+                        <span>Battery</span>
+
+                        <strong>
+                            87%
+                        </strong>
+
+                        <div class="mini-progress">
+                            <span style="width:87%"></span>
+                        </div>
+
+                    </div>
+
+                    <div class="health-card">
+
+                        <span>Temperature</span>
+
+                        <strong>
+                            34°C
+                        </strong>
+
+                    </div>
+
+                </div>
+
+            </section>
+
+
+            <!-- =================================================
+                 SETTINGS
+            ================================================= -->
+
+            <section class="page" id="page-settings">
+
+                <div class="page-heading">
+
+                    <div>
+
+                        <span class="section-label">
+                            CONFIGURATION
+                        </span>
+
+                        <h1>System Settings</h1>
+
+                        <p>
+                            Frontend demonstration settings.
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <div class="settings-grid">
+
+                    <div class="panel settings-panel">
+
+                        <span class="section-label">
+                            DETECTION
+                        </span>
+
+                        <h3>
+                            Detection Configuration
+                        </h3>
+
+
+                        <label class="setting-row">
+
+                            <div>
+                                <strong>
+                                    Alert Sensitivity
+                                </strong>
+
+                                <small>
+                                    Controls risk sensitivity.
+                                </small>
+                            </div>
+
+                            <select>
+                                <option>High</option>
+                                <option>Medium</option>
+                                <option>Low</option>
+                            </select>
+
+                        </label>
+
+
+                        <label class="setting-row">
+
+                            <div>
+                                <strong>
+                                    Confidence Threshold
+                                </strong>
+
+                                <small>
+                                    Minimum AI confidence.
+                                </small>
+                            </div>
+
+                            <select>
+                                <option>80%</option>
+                                <option selected>85%</option>
+                                <option>90%</option>
+                                <option>95%</option>
+                            </select>
+
+                        </label>
+
+
+                        <label class="setting-row">
+
+                            <div>
+                                <strong>
+                                    Highway Zone
+                                </strong>
+
+                                <small>
+                                    Active monitoring zone.
+                                </small>
+                            </div>
+
+                            <select>
+                                <option>Zone 01</option>
+                                <option>Zone 02</option>
+                                <option selected>Zone 03</option>
+                                <option>Zone 04</option>
+                            </select>
+
+                        </label>
+
+                    </div>
+
+
+                    <div class="panel settings-panel">
+
+                        <span class="section-label">
+                            NOTIFICATIONS
+                        </span>
+
+                        <h3>
+                            Notification Settings
+                        </h3>
+
+
+                        <label class="toggle-row">
+
+                            <div>
+                                <strong>
+                                    High Risk Alerts
+                                </strong>
+
+                                <small>
+                                    Notify immediately.
+                                </small>
+                            </div>
+
+                            <input type="checkbox"
+                                   checked>
+                        </label>
+
+
+                        <label class="toggle-row">
+
+                            <div>
+                                <strong>
+                                    Warning System
+                                </strong>
+
+                                <small>
+                                    Activate warning hardware.
+                                </small>
+                            </div>
+
+                            <input type="checkbox"
+                                   checked>
+                        </label>
+
+
+                        <label class="toggle-row">
+
+                            <div>
+                                <strong>
+                                    Water Alerts
+                                </strong>
+
+                                <small>
+                                    Tank level notifications.
+                                </small>
+                            </div>
+
+                            <input type="checkbox"
+                                   checked>
+                        </label>
+
+                    </div>
+
+
+                    <div class="panel settings-panel">
+
+                        <span class="section-label">
+                            AI ENGINE
+                        </span>
+
+                        <h3>
+                            AI Model Information
+                        </h3>
+
+                        <div class="model-info">
+
+                            <div>
+                                <span>Model</span>
+                                <strong>
+                                    YOLO-based Wildlife Detection
+                                </strong>
+                            </div>
+
+                            <div>
+                                <span>Deployment</span>
+                                <strong>Edge AI</strong>
+                            </div>
+
+                            <div>
+                                <span>Target Hardware</span>
+                                <strong>
+                                    RV1103 / Luckfox Pico Plus
+                                </strong>
+                            </div>
+
+                            <div>
+                                <span>Model Format</span>
+                                <strong>RKNN</strong>
+                            </div>
+
+                            <div>
+                                <span>Detection</span>
+                                <strong>
+                                    Real-time Wildlife Detection
+                                </strong>
+                            </div>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="panel settings-panel">
+
+                        <span class="section-label">
+                            SYSTEM
+                        </span>
+
+                        <h3>
+                            General Settings
+                        </h3>
+
+                        <label class="input-setting">
+                            System Name
+                            <input value="PRANSTAMBH">
+                        </label>
+
+                        <label class="input-setting">
+                            Highway Zone
+                            <input value="Highway Zone 03">
+                        </label>
+
+                        <button class="black-btn"
+                                onclick="saveSettings()">
+                            SAVE SETTINGS
+                        </button>
+
+                    </div>
+
+                </div>
+
+            </section>
+
+
+        </div>
+
+    </main>
+
+</div>
+
+
+<!-- =========================================================
+     NOTIFICATION TOAST
+========================================================= -->
+
+<div id="toastContainer"></div>
+
+
+<!-- =========================================================
+     MODAL
+========================================================= -->
+
+<div id="modal" class="modal">
+
+    <div class="modal-box">
+
+        <button class="modal-close"
+                onclick="closeModal()">
+            ×
+        </button>
+
+        <span class="section-label">
+            ALERT DETAILS
+        </span>
+
+        <h2 id="modalTitle">
+            Wildlife Alert
+        </h2>
+
+        <p id="modalText">
+            Alert details.
+        </p>
+
+        <button class="black-btn"
+                onclick="closeModal()">
+            Close
+        </button>
+
+    </div>
+
+</div>
+
+
+<!-- Leaflet -->
+
+<script
+    src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js">
+</script>
+
+<script type="module" src="script.js"></script>
+
+</body>
+</html>
