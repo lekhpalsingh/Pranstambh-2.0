@@ -283,6 +283,167 @@ onSnapshot(
                 detectionHistory[detectionHistory.length - 1];
 
             updateLiveDetection(latest);
+            updateActiveAlert(latest);
+           function updateActiveAlert(data) {
+
+    if (!data) return;
+
+
+    // =========================
+    // ELEMENTS
+    // =========================
+
+    const riskElement =
+        document.getElementById(
+            "activeAlertRisk"
+        );
+
+    const animalElement =
+        document.getElementById(
+            "activeAlertAnimal"
+        );
+
+    const locationElement =
+        document.getElementById(
+            "activeAlertLocation"
+        );
+
+    const timeElement =
+        document.getElementById(
+            "activeAlertTime"
+        );
+
+    const confidenceElement =
+        document.getElementById(
+            "activeAlertConfidence"
+        );
+
+    const distanceElement =
+        document.getElementById(
+            "activeAlertDistance"
+        );
+
+    const statusElement =
+        document.getElementById(
+            "activeAlertStatus"
+        );
+
+
+    // =========================
+    // RISK
+    // =========================
+
+    const risk =
+        String(
+            data.risk || "UNKNOWN"
+        ).toUpperCase();
+
+
+    if (riskElement) {
+
+        riskElement.textContent =
+            risk;
+
+        riskElement.className =
+            "danger-badge";
+
+        if (risk === "HIGH") {
+
+            riskElement.classList.add(
+                "risk-high"
+            );
+
+        }
+
+    }
+
+
+    // =========================
+    // ANIMAL
+    // =========================
+
+    if (animalElement) {
+
+        animalElement.textContent =
+            data.animal
+                ? `${data.animal} detected`
+                : "Animal detected";
+
+    }
+
+
+    // =========================
+    // LOCATION
+    // =========================
+
+    if (locationElement) {
+
+        locationElement.textContent =
+            data.location ||
+            data.camera ||
+            "Unknown location";
+
+    }
+
+
+    // =========================
+    // TIME
+    // =========================
+
+    if (timeElement) {
+
+        timeElement.textContent =
+            data.time || "—";
+
+    }
+
+
+    // =========================
+    // CONFIDENCE
+    // =========================
+
+    if (confidenceElement) {
+
+        confidenceElement.textContent =
+            data.confidence !== undefined
+                ? `${data.confidence}%`
+                : "—";
+
+    }
+
+
+    // =========================
+    // DISTANCE
+    // =========================
+
+    if (distanceElement) {
+
+        distanceElement.textContent =
+            data.distance !== undefined
+                ? `${data.distance}m`
+                : "—";
+
+    }
+
+
+    // =========================
+    // STATUS
+    // =========================
+
+    if (statusElement) {
+
+        statusElement.textContent =
+            data.status || "—";
+
+    }
+
+
+    console.log(
+        "🚨 ACTIVE ALERT UPDATED:",
+        data
+    );
+
+}
         }
 
     },
