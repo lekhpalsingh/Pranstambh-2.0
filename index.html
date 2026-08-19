@@ -1152,80 +1152,102 @@
 
                     <!-- ACTIVE ALERT -->
 
-                    <div class="panel active-alert-panel">
+                   <!-- ACTIVE ALERT -->
 
-                        <div class="panel-header">
+<div class="panel active-alert-panel">
 
-                            <div>
-                                <span>ALERT CENTER</span>
-                                <h3>Active Alert</h3>
-                            </div>
+    <div class="panel-header">
 
-                            <span class="danger-badge">
-                                HIGH
-                            </span>
+        <div>
+            <span>ALERT CENTER</span>
+            <h3>Active Alert</h3>
+        </div>
 
-                        </div>
+        <span id="activeAlertRisk"
+              class="danger-badge">
+            NO ALERT
+        </span>
 
-
-                        <div class="alert-animal">
-
-                            <div class="animal-avatar">
-                                🐄
-                            </div>
-
-                            <div>
-                                <strong>Cow detected</strong>
-                                <span>
-                                    Highway Zone 03
-                                </span>
-                            </div>
-
-                        </div>
+    </div>
 
 
-                        <div class="alert-details">
+    <div class="alert-animal">
 
-                            <div>
-                                <small>TIME</small>
-                                <strong>19:42:31</strong>
-                            </div>
+        <div id="activeAlertAvatar"
+             class="animal-avatar">
+            🐾
+        </div>
 
-                            <div>
-                                <small>CONFIDENCE</small>
-                                <strong>94%</strong>
-                            </div>
+        <div>
 
-                            <div>
-                                <small>BUZZER</small>
-                                <strong class="danger-text">ON</strong>
-                            </div>
+            <strong id="activeAlertAnimal">
+                No active detection
+            </strong>
 
-                            <div>
-                                <small>LED</small>
-                                <strong class="danger-text">RED</strong>
-                            </div>
+            <span id="activeAlertLocation">
+                Waiting for Firebase data...
+            </span>
 
-                        </div>
+        </div>
+
+    </div>
 
 
-                        <div class="alert-actions">
+    <div class="alert-details">
 
-                            <button class="black-btn"
-                                    onclick="acknowledgeAlert()">
-                                ACKNOWLEDGE
-                            </button>
+        <div>
+            <small>TIME</small>
 
-                            <button class="outline-btn"
-                                    onclick="showAlertDetails()">
-                                VIEW DETAILS
-                            </button>
+            <strong id="activeAlertTime">
+                —
+            </strong>
+        </div>
 
-                        </div>
 
-                    </div>
+        <div>
+            <small>CONFIDENCE</small>
 
-                </div>
+            <strong id="activeAlertConfidence">
+                —
+            </strong>
+        </div>
+
+
+        <div>
+            <small>DISTANCE</small>
+
+            <strong id="activeAlertDistance">
+                —
+            </strong>
+        </div>
+
+
+        <div>
+            <small>STATUS</small>
+
+            <strong id="activeAlertStatus">
+                —
+            </strong>
+        </div>
+
+    </div>
+
+
+    <div class="alert-actions">
+
+        <button class="black-btn"
+                onclick="acknowledgeAlert()">
+            ACKNOWLEDGE
+        </button>
+
+        <button class="outline-btn"
+                onclick="showAlertDetails()">
+            VIEW DETAILS
+        </button>
+
+    </div>
+
+</div>
 
 
                 <!-- HISTORY -->
