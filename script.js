@@ -842,6 +842,113 @@ function updateActivityBar(
         `${(count / max) * 100}%`;
 
 }
+
+/* =========================================================
+   HOW IT WORKS MODAL
+========================================================= */
+
+window.showHowItWorks = function () {
+
+    const modal =
+        document.getElementById(
+            "howItWorksModal"
+        );
+
+    if (!modal) return;
+
+    modal.classList.add("show");
+
+    modal.setAttribute(
+        "aria-hidden",
+        "false"
+    );
+
+    document.body.style.overflow = "hidden";
+
+};
+
+window.showHowItWorks = function () {
+
+    const modal =
+        document.getElementById("howItWorksModal");
+
+    if (!modal) return;
+
+    modal.classList.add("show");
+    modal.setAttribute("aria-hidden", "false");
+
+    document.body.style.overflow = "hidden";
+};
+
+
+window.closeHowItWorks = function () {
+
+    const modal =
+        document.getElementById("howItWorksModal");
+
+    if (!modal) return;
+
+    modal.classList.remove("show");
+    modal.setAttribute("aria-hidden", "true");
+
+    document.body.style.overflow = "";
+};
+
+
+// Click outside popup to close
+document.getElementById("howItWorksModal")
+    ?.addEventListener("click", function (event) {
+
+        const popup =
+            document.querySelector(".how-it-works-box");
+
+        if (
+            event.target === this ||
+            !popup.contains(event.target)
+        ) {
+            closeHowItWorks();
+        }
+
+    });
+
+
+window.closeHowItWorks = function () {
+
+    const modal =
+        document.getElementById(
+            "howItWorksModal"
+        );
+
+    if (!modal) return;
+
+    modal.classList.remove("show");
+
+    modal.setAttribute(
+        "aria-hidden",
+        "true"
+    );
+
+    document.body.style.overflow = "";
+
+};
+
+
+/* Close with ESC */
+
+document.addEventListener(
+    "keydown",
+    function (event) {
+
+        if (event.key === "Escape") {
+
+            closeHowItWorks();
+
+        }
+
+    }
+);
+
+
 /* =========================================================
    DOM
 ========================================================= */
