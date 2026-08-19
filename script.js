@@ -1276,12 +1276,15 @@ function updateClock() {
         new Date();
 
     const time =
-        now.toLocaleTimeString(
-            "en-IN",
-            {
-                hour12: false
-            }
-        );
+    now.toLocaleTimeString(
+        "en-IN",
+        {
+            hour: "2-digit",
+            minute: "2-digit",
+            second: "2-digit",
+            hour12: true
+        }
+    );
 
     const date =
         now.toLocaleDateString(
