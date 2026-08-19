@@ -56,8 +56,6 @@ const db = getFirestore(app);
 const detectionQuery = query(
     collection(db, "detections")
 );
-
-
 onSnapshot(detectionQuery, (snapshot) => {
 
     snapshot.docChanges().forEach((change) => {
@@ -204,6 +202,75 @@ onSnapshot(detectionQuery, (snapshot) => {
     });
 
 });
+
+// =====================================
+// FIREBASE WILDLIFE HISTORY
+// =====================================
+
+/*let firebaseDetectionHistory = [];
+
+
+onSnapshot(detectionQuery, (snapshot) => {
+
+    // Get ALL Firebase detection records
+    firebaseDetectionHistory =
+        snapshot.docs.map(doc => {
+
+            const data = doc.data();
+
+            return {
+                id: doc.id,
+
+                animal:
+                    data.animal || "UNKNOWN",
+
+                camera:
+                    data.camera || "UNKNOWN",
+
+                confidence:
+                    Number(data.confidence) || 0,
+
+                date:
+                    data.date || "UNKNOWN",
+
+                risk:
+                    String(data.risk || "UNKNOWN").toUpperCase(),
+
+                status:
+                    data.status || "UNKNOWN",
+
+                time:
+                    data.time || "UNKNOWN"
+            };
+
+        });
+
+
+    console.log(
+        "🔥 Firebase history:",
+        firebaseDetectionHistory
+    );
+
+
+    // Update Analytics
+    updateWildlifeAnalytics();
+
+
+    // Process newest detection
+    if (snapshot.docChanges().length > 0) {
+
+        const latest =
+            firebaseDetectionHistory[
+                firebaseDetectionHistory.length - 1
+            ];
+
+        updateLiveDetection(latest);
+
+    }
+
+});*/
+
+
 
 // =====================================
 // WILDLIFE ANALYTICS
