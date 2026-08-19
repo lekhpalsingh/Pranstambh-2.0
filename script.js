@@ -208,69 +208,181 @@ const detectionQuery = query(
 // =====================================
 
 let firebaseDetectionHistory = [];
+let detectionHistory = [];
 
+onSnapshot(
+    detectionQuery,
 
-onSnapshot(detectionQuery, (snapshot) => {
+    (snapshot) => {
 
-    // Get ALL Firebase detection records
-    firebaseDetectionHistory =
-        snapshot.docs.map(doc => {
+        firebaseDetectionHistory = snapshot.docs.map(doc => {
 
             const data = doc.data();
 
             return {
                 id: doc.id,
 
-                animal:
-                    data.animal || "UNKNOWN",
+                animal: data.animal || "UNKNOWN",
 
-                camera:
-                    data.camera || "UNKNOWN",
+                camera: data.camera || "UNKNOWN",
 
                 confidence:
                     Number(data.confidence) || 0,
 
-                date:
-                    data.date || "UNKNOWN",
+                date: data.date || "UNKNOWN",
 
                 risk:
                     String(data.risk || "UNKNOWN").toUpperCase(),
 
-                status:
-                    data.status || "UNKNOWN",
+                status: data.status || "UNKNOWN",
 
-                time:
-                    data.time || "UNKNOWN"
+                time: data.time || "UNKNOWN",
+
+                distance:
+                    Number(data.distance) || 0,
+
+                location:
+                    data.location ||
+                    data.camera ||
+                    "UNKNOWN",
+
+                action:
+                    data.action ||
+                    (
+                        String(data.risk || "")
+                            .toUpperCase() === "HIGH"
+                            ? "Alert"
+                            : "View"
+                    )
             };
 
         });
 
+        // IMPORTANT:
+        // Firebase data becomes the main dashboard data
+        detectionHistory = [...firebaseDetectionHistory];
 
-    console.log(
-        "🔥 Firebase history:",
-        firebaseDetectionHistory
-    );
+        console.log(
+            "🔥 FIREBASE DATA:",
+            detectionHistory
+        );
+
+        // Analytics
+        updateWildlifeAnalytics();
+
+        // Dashboard cards
+        updateDashboardStats();
+
+        // History table
+        renderHistory(detectionHistory);
+
+        // Latest detection
+        if (detectionHistory.length > 0) {
+
+            const latest =
+                detectionHistory[detectionHistory.length - 1];
+
+            updateLiveDetection(latest);
+        }
+
+    },
+
+    (error) => {
+
+        console.error(
+            "❌ FIREBASE ERROR:",
+            error
+        );
+
+        showToast(
+            "FIREBASE ERROR",
+            error.message || "Unable to load Firebase data."
+        );
+
+    }
+);
+
+function updateLiveDetection(data) {
+
+    if (!data) return;
+
+    const animal =
+        document.getElementById("liveAnimal");
+
+    const camera =
+        document.getElementById("liveCamera");
+
+    const confidence =
+        document.getElementById("liveConfidence");
+
+    const date =
+        document.getElementById("liveDate");
+
+    const risk =
+        document.getElementById("liveRisk");
+
+    const status =
+        document.getElementById("liveStatus");
+
+    const time =
+        document.getElementById("liveTime");
 
 
-    // Update Analytics
-    updateWildlifeAnalytics();
+    if (animal)
+        animal.textContent =
+            data.animal || "UNKNOWN";
 
 
-    // Process newest detection
-    if (snapshot.docChanges().length > 0) {
+    if (camera)
+        camera.textContent =
+            data.camera || "UNKNOWN";
 
-        const latest =
-            firebaseDetectionHistory[
-                firebaseDetectionHistory.length - 1
-            ];
 
-        updateLiveDetection(latest);
+    if (confidence)
+        confidence.textContent =
+            data.confidence
+                ? `${data.confidence}%`
+                : "—";
+
+
+    if (date)
+        date.textContent =
+            data.date || "—";
+
+
+    if (risk) {
+
+        risk.textContent =
+            data.risk || "—";
+
+        risk.className = "";
+
+        if (data.risk) {
+
+            risk.classList.add(
+                `risk-${data.risk.toLowerCase()}`
+            );
+
+        }
 
     }
 
-});
+
+    if (status)
+        status.textContent =
+            data.status || "—";
 
 
+    if (time)
+        time.textContent =
+            data.time || "—";
+
+
+    console.log(
+        "🦌 LIVE DETECTION:",
+        data
+    );
+}
 
 // =====================================
 // WILDLIFE ANALYTICS
