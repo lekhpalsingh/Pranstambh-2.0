@@ -4081,5 +4081,68 @@ td {
         right: 20px;
         left: 20px;
     }
+}
+   /* =========================================
+   LIVE DETECTION DATA
+========================================= */
+
+.detection-live-data {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 18px;
+    padding: 30px;
+}
+
+
+.live-data-card {
+    padding: 22px;
+    border: 1px solid #e5e5e5;
+    border-radius: 12px;
+    background: #fafafa;
+}
+
+
+.live-data-card small {
+    display: block;
+    margin-bottom: 8px;
+    font-size: 11px;
+    letter-spacing: 1.5px;
+    color: #777;
+}
+
+
+.live-data-card strong {
+    display: block;
+    font-size: 22px;
+    font-weight: 700;
+    color: #111;
+}
+
+
+.live-data-card .risk-high,
+.risk-high {
+    color: #c62828;
+}
+
+
+.live-data-card .risk-medium,
+.risk-medium {
+    color: #e68a00;
+}
+
+
+.live-data-card .risk-low,
+.risk-low {
+    color: #16804b;
+}
+
+
+@media (max-width: 700px) {
+
+    .detection-live-data {
+        grid-template-columns: 1fr;
+        padding: 20px;
+    }
 
 }
+
